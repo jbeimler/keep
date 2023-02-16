@@ -77,10 +77,12 @@ class MysqlProvider(BaseProvider):
         cursor.execute(formatted_query)
         results = cursor.fetchall()
 
+        cursor.close()
+        
         if kwargs.get("single_row"):
             return results[0]
 
-        cursor.close()
+        
         return results
 
 
